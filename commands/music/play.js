@@ -7,8 +7,8 @@ module.exports = {
     voiceChannel: true,
     options: [
         {
-            name: 'song',
-            description: 'the song you want to play',
+            name: 'ENVOOOOIE',
+            description: 'envoie ma jolie! vilaine va',
             type: ApplicationCommandOptionType.String,
             required: true,
         }
@@ -17,8 +17,8 @@ module.exports = {
     async execute({ inter, client }) {
         const player = useMainPlayer()
 
-        const song = inter.options.getString('song');
-        const res = await player.search(song, {
+        const ENVOOOOIE = inter.options.getString('ENVOOOOIE');
+        const res = await player.search(ENVOOOOIE, {
             requestedBy: inter.member,
             searchEngine: QueryType.AUTO
         });
