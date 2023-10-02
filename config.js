@@ -1,6 +1,6 @@
 module.exports = {
     app: {
-        token: '.env',
+        token: process.env.token,
         playing: 'envoie la sauce',
         global: true,
         guild: '',
