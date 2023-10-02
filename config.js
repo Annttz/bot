@@ -1,8 +1,7 @@
 require("dotenv").config();
 module.exports = {
   app: {
-    token:
-      "MTE1ODMyMzc2NzU2NzcyODczMA.GLsIGn.q7GcwVaBsxv-ur0kS7BKExM18OmrQzhe-LhqQ4",
+    token: process.env.TOKEN,
     playing: "envoie la sauce",
     global: true,
     guild: "",
