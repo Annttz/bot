@@ -16,11 +16,11 @@ module.exports = async ({ client, inter, queue }) => {
                 .setDescription(toSend)
                 .setColor('#2f3136')
                 .setTimestamp()
-                .setFooter({ text: 'Music comes first - Made with heart by Zerio ❤️', iconURL: inter.member.avatarURL({ dynamic: true }) })
+                .setFooter({ text: 'Merci à Val et Antz mais surtout Val', iconURL: inter.member.avatarURL({ dynamic: true }) })
             );
         }
         return inter.editReply({ embeds: embeds, ephemeral: true });
     } catch (error) {
-        inter.editReply({ content: `Error! Please contact Developers! | ❌`, ephemeral: true });
+        inter.editReply({ content: `Error! Please contact @val! | ❌`, ephemeral: true });
     }
 }

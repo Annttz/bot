@@ -13,7 +13,7 @@ module.exports = async ({  inter, queue }) => {
 
     if (repeatMode === 2) queue.setRepeatMode( QueueRepeatMode.OFF)
     
-    return inter.editReply({ content: `loop made has been set to **${methods[queue.repeatMode]}**.✅`})
+    return inter.editReply({ content: `AZZZY CA LOOOP **${methods[queue.repeatMode]}**.`})
 
 
 

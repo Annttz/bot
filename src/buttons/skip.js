@@ -3,5 +3,5 @@ module.exports = async ({  inter, queue }) => {
     
     const success = queue.node.skip();
 
-    return inter.editReply({ content: success ? `Current music ${queue.currentTrack.title} skipped ✅` : `Something went wrong ${inter.member}... try again ? ❌`, ephemeral: true});
+    return inter.editReply({ content: success ? `DEGAAAAAGE TA MERDE : ${queue.currentTrack.title} ALLEZ HOP POUBELLE` : `Something went wrong ${inter.member}... try again ? ❌`, ephemeral: true});
 }

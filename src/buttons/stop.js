@@ -6,7 +6,7 @@ module.exports = async ({ client, inter, queue }) => {
 
         const StopEmbed = new EmbedBuilder()
         .setColor('#2f3136')
-        .setAuthor({name: `Music stopped into this server, see you next time ✅` })
+        .setAuthor({name: `STOOOOP TOUT` })
 
 
        return inter.editReply({ embeds: [StopEmbed], ephemeral: true });

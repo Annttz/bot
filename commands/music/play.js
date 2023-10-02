@@ -2,8 +2,8 @@ const { QueryType, useMainPlayer, useQueue } = require('discord-player');
 const { ApplicationCommandOptionType, EmbedBuilder } = require('discord.js');
 
 module.exports = {
-    name: 'play',
-    description: "play a song!",
+    name: 'ENVOOOOIE',
+    description: "envoie ma jolie! vilaine va",
     voiceChannel: true,
     options: [
         {
@@ -51,7 +51,7 @@ module.exports = {
         }
 
             const playEmbed = new EmbedBuilder()
-                .setAuthor({ name: `Loading your ${res.playlist ? 'playlist' : 'track'} to the queue... ✅`})
+                .setAuthor({ name: `CA ARRRRIVE FORT DANS ${res.playlist ? 'playlist' : 'track'} TON Q 🔥`})
                 .setColor('#2f3136')
                 
             await inter.editReply({ embeds: [playEmbed] });

@@ -5,5 +5,5 @@ module.exports = async ({  inter, queue }) => {
 
     await queue.history.back();
 
-    inter.editReply({ content:`Playing the **previous** track ✅`, ephemeral: true});
+    inter.editReply({ content:`ET ALLLLEZ ENCORE`, ephemeral: true});
 }
