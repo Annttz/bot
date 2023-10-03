@@ -11,14 +11,14 @@ module.exports = {
 
 const queue = useQueue(inter.guild);
 
-        if (!queue || !queue.isPlaying()) return inter.editReply({ content: `No music currently playing ${inter.member}... try again ? ❌`, ephemeral: true });
+        if (!queue || !queue.isPlaying()) return inter.editReply({ content: `Aie aie aie ya r ${inter.member}`, ephemeral: true });
         
         try {
         
         const search = await genius.songs.search(queue.currentTrack.title); 
 
         const song = search.find(song => song.artist.name.toLowerCase() === queue.currentTrack.author.toLowerCase());
-        if (!song) return inter.editReply({ content: `No lyrics found for ${queue.currentTrack.title}... try again ? ❌`, ephemeral: true });
+        if (!song) return inter.editReply({ content: `Aie aie aie ya r ${queue.currentTrack.title}`, ephemeral: true });
         const lyrics = await song.lyrics();
         const embeds = [];
         for (let i = 0; i < lyrics.length; i += 4096) {
@@ -28,13 +28,13 @@ const queue = useQueue(inter.guild);
                 .setDescription(toSend)
                 .setColor('#2f3136')
                 .setTimestamp()
-                .setFooter({ text: 'Music comes first - Made with heart by Zerio ❤️', iconURL: inter.member.avatarURL({ dynamic: true })})
+                .setFooter({ text: 'Made by VAL & ANTZ', iconURL: inter.member.avatarURL({ dynamic: true })})
                 );
         }
         return inter.editReply({ embeds: embeds });
 
     } catch (error) {
-            inter.editReply({ content: `Error! Please contact Developers! | ❌`, ephemeral: true });
+            inter.editReply({ content: `Error! demande à @Val ou à @myw mais fait pas chier | ❌`, ephemeral: true });
     } 
     },
 };
