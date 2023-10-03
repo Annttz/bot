@@ -3,12 +3,12 @@ module.exports = (queue, track) => {
 
     if (!client.config.app.loopMessage && queue.repeatMode !== 0) return;
     const embed = new EmbedBuilder()
-    .setAuthor({name: `CA ARRRIVE FORT🔥 : ${track.title} dans ${queue.channel.name} 🎧`, iconURL: track.thumbnail})
-    .setColor('pink')
+    .setAuthor({name: `Started playing ${track.title} in ${queue.channel.name} 🎧`, iconURL: track.thumbnail})
+    .setColor('#F58DD2')
 
     const back = new ButtonBuilder()
     .setLabel('Back')
-    .setCustomId(JSON.stringify({ffb: 'retourrr garçon'}))
+    .setCustomId(JSON.stringify({ffb: 'back'}))
     .setStyle('Primary')
 
     const skip = new ButtonBuilder()

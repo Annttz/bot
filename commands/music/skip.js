@@ -3,7 +3,7 @@ const { useMainPlayer, useQueue  } = require('discord-player');
 
 module.exports = {
     name: 'skip',
-    description: 'skip the track',
+    description: 'DEGAGE MOI CA DE LA',
     voiceChannel: true,
 
     execute({ inter }) {
@@ -11,13 +11,13 @@ module.exports = {
 
 const queue = useQueue(inter.guild);
 
-         if (!queue || !queue.isPlaying()) return inter.editReply({ content:`No music currently playing ${inter.member}... try again ? ❌`, ephemeral: true });
+         if (!queue || !queue.isPlaying()) return inter.editReply({ content:`T'es con wesh?? ya pas de son ${inter.member}`, ephemeral: true });
 
         const success = queue.node.skip();
 
         const SkipEmbed = new EmbedBuilder()
-        .setColor('#2f3136')
-        .setAuthor({name: success ? `Current music ${queue.currentTrack.title} skipped ✅` : `Something went wrong ${inter.member}... try again ? ❌` })
+        .setColor('#F47C61')
+        .setAuthor({name: success ? `CA A BIEN DEGAGER ${queue.currentTrack.title} 🤡` : `PROBLEMO DEMANDE A @val ${inter.member}` })
 
 
        return inter.editReply({ embeds: [SkipEmbed] });

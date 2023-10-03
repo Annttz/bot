@@ -1,4 +1,4 @@
 module.exports = async (client) => {
-    console.log(`Logged to the client ${client.user.username}\nlets play some music!`);
+    console.log(`On est la ${client.user.username}\naie aie aie!`);
     client.user.setActivity(client.config.app.playing);   
 };

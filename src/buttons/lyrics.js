@@ -6,7 +6,7 @@ module.exports = async ({ client, inter, queue }) => {
         const search = await genius.songs.search(queue.currentTrack.title);
 
         const song = search.find(song => song.artist.name.toLowerCase() === queue.currentTrack.author.toLowerCase());
-        if (!song) return inter.editReply({ content: `No lyrics found for ${queue.currentTrack.title}... try again ? ❌`, ephemeral: true });
+        if (!song) return inter.editReply({ content: `ya pas lyrics ${queue.currentTrack.title}`, ephemeral: true });
         const lyrics = await song.lyrics();
         const embeds = [];
         for (let i = 0; i < lyrics.length; i += 4096) {
@@ -14,9 +14,9 @@ module.exports = async ({ client, inter, queue }) => {
             embeds.push(new EmbedBuilder()
                 .setTitle(`Lyrics for ${queue.currentTrack.title}`)
                 .setDescription(toSend)
-                .setColor('#2f3136')
+                .setColor('#F58DD2')
                 .setTimestamp()
-                .setFooter({ text: 'Merci à Val et Antz mais surtout Val', iconURL: inter.member.avatarURL({ dynamic: true }) })
+                .setFooter({ text: 'Made by VAL & ANTZ', iconURL: inter.member.avatarURL({ dynamic: true }) })
             );
         }
         return inter.editReply({ embeds: embeds, ephemeral: true });

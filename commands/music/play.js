@@ -2,13 +2,13 @@ const { QueryType, useMainPlayer, useQueue } = require('discord-player');
 const { ApplicationCommandOptionType, EmbedBuilder } = require('discord.js');
 
 module.exports = {
-    name: 'ENVOOOOIE',
-    description: "envoie ma jolie! vilaine va",
+    name: 'play',
+    description: "BALANCE TA SAUCE PELO DE VAULX",
     voiceChannel: true,
     options: [
         {
-            name: 'ENVOOOOIE',
-            description: 'envoie ma jolie! vilaine va',
+            name: 'song',
+            description: 'BALANCE TA SAUCE PELO DE VAULX',
             type: ApplicationCommandOptionType.String,
             required: true,
         }
@@ -17,14 +17,14 @@ module.exports = {
     async execute({ inter, client }) {
         const player = useMainPlayer()
 
-        const ENVOOOOIE = inter.options.getString('ENVOOOOIE');
-        const res = await player.search(ENVOOOOIE, {
+        const song = inter.options.getString('song');
+        const res = await player.search(song, {
             requestedBy: inter.member,
             searchEngine: QueryType.AUTO
         });
         const NoResultsEmbed = new EmbedBuilder()
-            .setAuthor({ name: `No results found... try again ? ❌`})
-            .setColor('#2f3136')
+            .setAuthor({ name: `YA PAS WESH`})
+            .setColor('#F58DD2')
 
         if (!res || !res.tracks.length) return inter.editReply({ embeds: [NoResultsEmbed] });
 
@@ -44,15 +44,15 @@ module.exports = {
             await player.deleteQueue(inter.guildId);
 
             const NoVoiceEmbed = new EmbedBuilder()
-                .setAuthor({ name: `I can't join the voice channel... try again ? ❌`})
-                .setColor('#2f3136')
+                .setAuthor({ name: `J'ARRIVE PAS A ME CO ZEUBI 🤬`})
+                .setColor('#F58DD2')
 
             return inter.editReply({ embeds: [NoVoiceEmbed] });
         }
 
             const playEmbed = new EmbedBuilder()
-                .setAuthor({ name: `CA ARRRRIVE FORT DANS ${res.playlist ? 'playlist' : 'track'} TON Q 🔥`})
-                .setColor('#2f3136')
+                .setAuthor({ name: `ENVOOOOIE TA DRILL ${res.playlist ? '' : ''} DANS LA QUEUE🔥`})
+                .setColor('#F58DD2')
                 
             await inter.editReply({ embeds: [playEmbed] });
 

@@ -3,7 +3,7 @@ const { useMainPlayer, useQueue} = require('discord-player');
 
 module.exports = {
     name: 'clear',
-    description: 'clear all the music in the queue',
+    description: 'DEGAGE TOUT',
     voiceChannel: true,
 
     async execute({ inter }) {
@@ -17,7 +17,7 @@ const queue = useQueue(inter.guild);
         await queue.tracks.clear();
 
         const ClearEmbed = new EmbedBuilder()
-        .setAuthor({name: `The queue has just been cleared 🗑️`})
+        .setAuthor({name: `CA A TOUT VIDE LE S 🗑️`})
         .setColor('#2f3136')
         
         inter.editReply({ embeds: [ClearEmbed] });

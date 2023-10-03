@@ -1,6 +1,6 @@
 const { EmbedBuilder } = require('discord.js');
 module.exports = async ({ client, inter, queue }) => { 
-    if (!queue || !queue.isPlaying()) return inter.editReply({ content: `Y'a pas pélo ouvre tes yeux zeubi 👀`, ephemeral: true });
+    if (!queue || !queue.isPlaying()) return inter.editReply({ content: `No music currently playing... try again ? ❌`, ephemeral: true });
 
     const track = queue.currentTrack;
 
@@ -17,8 +17,8 @@ module.exports = async ({ client, inter, queue }) => {
     .setAuthor({ name: track.title,  iconURL: client.user.displayAvatarURL({ size: 1024, dynamic: true })})
     .setThumbnail(track.thumbnail)
     .setDescription(`Volume **${queue.node.volume}**%\nDuration **${trackDuration}**\nProgress ${progress}\nLoop mode **${methods[queue.repeatMode]}**\nRequested by ${track.requestedBy}`)
-    .setFooter({ text: 'Merci à Val et Antz mais surtout Val', iconURL: inter.member.avatarURL({ dynamic: true })})
-    .setColor('pink')
+    .setFooter({ text: 'Made by VAL & ANTZ', iconURL: inter.member.avatarURL({ dynamic: true })})
+    .setColor('#F58DD2')
     .setTimestamp()
 
     inter.editReply({ embeds: [embed], ephemeral: true });
