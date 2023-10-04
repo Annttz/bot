@@ -3,7 +3,7 @@ const { useMainPlayer, useQueue } = require('discord-player');
 
 module.exports = {
     name: 'nowplaying',
-    description: 'view what is playing!',
+    description: 'ouais bah pas utile',
     voiceChannel: true,
 
     execute({ inter }) {

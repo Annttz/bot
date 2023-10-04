@@ -19,7 +19,7 @@ module.exports = {
 
 const queue = useQueue(inter.guild);
 
-        if (!queue || !queue.isPlaying()) return inter.editReply({ content: `No music currently playing ${inter.member}... try again ? ❌`, ephemeral: true });
+        if (!queue || !queue.isPlaying()) return inter.editReply({ content: `Ya pas de son maggggle...  ${inter.member}🤣😴`, ephemeral: true });
 
         const song = inter.options.getString('song');
 
@@ -28,14 +28,14 @@ const queue = useQueue(inter.guild);
             searchEngine: QueryType.AUTO
         });
 
-        if (!res || !res.tracks.length) return inter.editReply({ content: `No results found ${inter.member}... try again ? ❌`, ephemeral: true });
+        if (!res || !res.tracks.length) return inter.editReply({ content: `Ca a pas trouvé mon pote ${inter.member}🤣😴`, ephemeral: true });
 
-       if (res.playlist) return inter.editReply({ content: `This command dose not support playlist's ${inter.member}... try again ? ❌`, ephemeral: true });
+       if (res.playlist) return inter.editReply({ content: `FOCCCCK il trouve pas la playlist oooopsi ${inter.member}`, ephemeral: true });
 
         queue.insertTrack(res.tracks[0], 0)
 
         const PlayNextEmbed = new EmbedBuilder()
-        .setAuthor({name: `Track has been inserted into the queue... it will play next 🎧` })
+        .setAuthor({name: `Tqt bg ca arrive juste après 😎` })
         .setColor('#2f3136')
         
         await inter.editReply({ embeds: [PlayNextEmbed] });

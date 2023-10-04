@@ -14,7 +14,7 @@ module.exports = {
         .setDescription('OUAIS OUAIS LES CMDS')
         .addFields([ { name: `Enabled - ${commands.size}`, value: commands.map(x => `\`${x.name}\``).join(' | ') } ])
         .setTimestamp()
-        .setFooter({ text: 'MADE by VAL & ANTZ', iconURL: inter.member.avatarURL({ dynamic: true })});
+        .setFooter({ text: 'MADE by VAL & ANTZ💜', iconURL: inter.member.avatarURL({ dynamic: true })});
 
         inter.editReply({ embeds: [embed] });
     },

@@ -3,7 +3,7 @@ const { ApplicationCommandOptionType, EmbedBuilder } = require('discord.js');
 
 module.exports = {
     name: 'loop',
-    description: 'enable or disable looping of song\'s or the whole queue',
+    description: 'ah ca looooop hein',
     voiceChannel: true,
     options: [
         {

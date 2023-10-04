@@ -11,7 +11,7 @@ module.exports = {
 
 const queue = useQueue(inter.guild);
 
-        if (!queue) return inter.editReply({ content: `No music currently playing ${inter.member}`, ephemeral: true });
+        if (!queue) return inter.editReply({ content: `Ya rien à jouer mon pote ${inter.member}🤣😴`, ephemeral: true });
 
         if (!queue.tracks.toArray()[0]) return  inter.editReply({ content: `Ya RIEN après wesh ${inter.member}`, ephemeral: true });
 

@@ -2,7 +2,7 @@ const { ApplicationCommandOptionType, ActionRowBuilder, ButtonBuilder, EmbedBuil
 
 module.exports = {
     name: 'controller',
-    description: "set controller channel ",
+    description: "touche pas à ca ",
     voiceChannel: false,
     permissions: PermissionsBitField.Flags.ManageMessages,
     options: [

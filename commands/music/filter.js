@@ -3,7 +3,7 @@ const { useMainPlayer, useQueue  } = require('discord-player');
 
 module.exports = {
     name: 'filter',
-    description: 'add a filter to your track',
+    description: 'tu vas pas faire ca quand meme',
     voiceChannel: true,
     options: [
         {

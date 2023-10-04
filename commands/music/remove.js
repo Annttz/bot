@@ -3,7 +3,7 @@ const { useMainPlayer, useQueue  } = require('discord-player');
 
 module.exports = {
     name: 'remove',
-    description: "remove a song from the queue",
+    description: "kiiiick le son bien fort en bas là",
     voiceChannel: true,
     options: [
         {
@@ -28,8 +28,8 @@ module.exports = {
 
 const queue = useQueue(inter.guild);
 
-        if (!queue || !queue.isPlaying()) return inter.editReply({ content: `No music currently playing ${inter.member}... try again ? ❌`, ephemeral: true });
-        if (!track && !number) inter.editReply({ content: `You have to use one of the options to remove a song ${inter.member}... try again ? ❌`, ephemeral: true });
+        if (!queue || !queue.isPlaying()) return inter.editReply({ content: `No music currently playing ${inter.member}`, ephemeral: true });
+        if (!track && !number) inter.editReply({ content: `choisis une option ${inter.member}`, ephemeral: true });
 
         const BaseEmbed = new EmbedBuilder()
         .setColor('#2f3136')

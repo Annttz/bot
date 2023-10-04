@@ -3,7 +3,7 @@ const { useMainPlayer, useQueue } = require('discord-player');
 
 module.exports = {
     name: 'jump',
-    description: "Jumps to particular track in queue",
+    description: "jump un sons dans la q",
     voiceChannel: true,
     options: [
         {

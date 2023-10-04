@@ -17,7 +17,7 @@ const queue = useQueue(inter.guild);
 
         const SkipEmbed = new EmbedBuilder()
         .setColor('#F47C61')
-        .setAuthor({name: success ? `CA A BIEN DEGAGER ${queue.currentTrack.title} 🤡` : `PROBLEMO DEMANDE A @val ${inter.member}` })
+        .setAuthor({name: success ? `CA A BIEN DEGAGER ${queue.currentTrack.title} 🤡` : `PROBLEMO DEMANDE A @val ou @myw ${inter.member}` })
 
 
        return inter.editReply({ embeds: [SkipEmbed] });

@@ -16,7 +16,7 @@ module.exports = async ({ client, inter, queue }) => {
                 .setDescription(toSend)
                 .setColor('#F58DD2')
                 .setTimestamp()
-                .setFooter({ text: 'Made by VAL & ANTZ', iconURL: inter.member.avatarURL({ dynamic: true }) })
+                .setFooter({ text: 'Made by VAL & ANTZ💜', iconURL: inter.member.avatarURL({ dynamic: true }) })
             );
         }
         return inter.editReply({ embeds: embeds, ephemeral: true });

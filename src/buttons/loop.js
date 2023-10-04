@@ -3,7 +3,7 @@ module.exports = async ({  inter, queue }) => {
 
     const methods = ['disabled', 'track', 'queue'];
 
-    if (!queue || !queue.isPlaying()) return inter.editReply({ content: `No music currently playing... try again ? ❌`, ephemeral: true });
+    if (!queue || !queue.isPlaying()) return inter.editReply({ content: `il peut pas loop le vide on est pas sur dbd salaud`, ephemeral: true });
 
     const repeatMode = queue.repeatMode
 

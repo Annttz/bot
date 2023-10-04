@@ -3,14 +3,14 @@ const { useMainPlayer, useQueue } = require('discord-player');
 
 module.exports = {
     name: 'history',
-    description: 'See the history of the queue',
+    description: ' history of the queue',
     voiceChannel: false,
 
     async execute({ inter }) {
 const queue = useQueue(inter.guild);
         const player = useMainPlayer()
 
-        if (!queue || queue.history.tracks.toArray().length == 0) return inter.editReply({ content: `No music has been played yet`, ephemeral: true });
+        if (!queue || queue.history.tracks.toArray().length == 0) return inter.editReply({ content: `euh réflechis`, ephemeral: true });
 
         const tracks = queue.history.tracks.toArray();
         console.log(tracks)
