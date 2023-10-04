@@ -6,7 +6,7 @@ module.exports = {
     async execute({ client, inter }) {
 
         const m = await inter.editReply("Ping?")
-        inter.editReply(`Pong! API Latency is ${Math.round(client.ws.ping)}ms 🛰️, Last heartbeat calculated ${ms(Date.now() - client.ws.shards.first().lastPingTimestamp, { long: true })} ago ARRETE DE PING VAL YA QUE TOI QUI FAIT CA WESH`)
+        inter.editReply(`Pong! API Latency is ${Math.round(client.ws.ping)}ms 🛰️, Last heartbeat calculated ${ms(Date.now() - client.ws.shards.first().lastPingTimestamp, { long: true })} ago **ARRETE DE PING VAL YA QUE TOI QUI FAIT CA WESH**`)
 
     },
 };
