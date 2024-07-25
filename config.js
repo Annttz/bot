@@ -2,12 +2,12 @@ const process = require("process");
 module.exports = {
   app: {
     token: process.env.TOKEN || "xxx",
-    playing: "by the Community ❤️",
+    playing: "by Antz & Val",
     global: true,
     guild: process.env.GUILD_ID || "xxx",
     extraMessages: false,
     loopMessage: false,
-    lang: "en",
+    lang: "fr",
     enableEmojis: false,
   },
 
