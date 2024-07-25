@@ -1,36 +1,30 @@
 const { EmbedBuilder } = require('discord.js');
-const { useMainPlayer, useQueue  } = require('discord-player');
+const { useQueue } = require('discord-player');
+const { Translate } = require('../../process_tools');
 
 module.exports = {
     name: 'queue',
-    description: 'Q TOUT',
+    description:('Get the songs in the queue'),
     voiceChannel: true,
 
-    execute({ client, inter }) {
-        const player = useMainPlayer()
+    async execute({ client, inter }) {
+        const queue = useQueue(inter.guild);
 
-const queue = useQueue(inter.guild);
-
-        if (!queue) return inter.editReply({ content: `Ya rien à jouer mon pote ${inter.member}🤣😴`, ephemeral: true });
-
-        if (!queue.tracks.toArray()[0]) return  inter.editReply({ content: `Ya RIEN après wesh ${inter.member}`, ephemeral: true });
+        if (!queue) return inter.editReply({ content: await Translate(`No music currently playing <${inter.member}>... try again ? <❌>`) });
+        if (!queue.tracks.toArray()[0]) return inter.editReply({ content: await Translate(`No music in the queue after the current one <${inter.member}>... try again ? <❌>`) });
 
         const methods = ['', '🔁', '🔂'];
-
         const songs = queue.tracks.size;
-
-        const nextSongs = songs > 5 ? `Et **${songs - 5}** d'autres sons` : `Dans la playlist **${songs}** `;
-
-        const tracks = queue.tracks.map((track, i) => `**${i + 1}** - ${track.title} | ${track.author} (requested by : ${track.requestedBy.username})`)
-
+        const nextSongs = songs > 5 ? await Translate(`And <**${songs - 5}**> other song(s)...`) : await Translate(`In the playlist <**${songs}**> song(s)...`);
+        const tracks = queue.tracks.map((track, i) => `**${i + 1}** - ${track.title} | ${track.author} (requested by : ${track.requestedBy ? track.requestedBy.displayName : "unknown"})`);
         const embed = new EmbedBuilder()
-        .setColor('#DE6FF2')
-        .setThumbnail(inter.guild.iconURL({ size: 2048, dynamic: true }))
-        .setAuthor({name: `Server queue - ${inter.guild.name} ${methods[queue.repeatMode]}`, iconURL: client.user.displayAvatarURL({ size: 1024, dynamic: true })})
-        .setDescription(`Current ${queue.currentTrack.title}\n\n${tracks.slice(0, 5).join('\n')}\n\n${nextSongs}`)
-        .setTimestamp()
-        .setFooter({ text: 'Fait par VAL & ANTZ', iconURL: inter.member.avatarURL({ dynamic: true })})
+            .setColor('#2f3136')
+            .setThumbnail(inter.guild.iconURL({ size: 2048, dynamic: true }))
+            .setAuthor({ name: await Translate(`Server queue - <${inter.guild.name}> <${methods[queue.repeatMode]}>`), iconURL: client.user.displayAvatarURL({ size: 1024, dynamic: true }) })
+            .setDescription(await Translate(`Current <${queue.currentTrack.title}> <\n\n> <${tracks.slice(0, 5).join('\n')}> <\n\n> <${nextSongs}>`))
+            .setTimestamp()
+            .setFooter({ text: await Translate('Music comes first - Made with heart by the Community <❤️>'), iconURL: inter.member.avatarURL({ dynamic: true }) });
 
         inter.editReply({ embeds: [embed] });
-    },
-};
+    }
+}

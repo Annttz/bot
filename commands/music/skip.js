@@ -1,26 +1,22 @@
 const { EmbedBuilder } = require('discord.js');
-const { useMainPlayer, useQueue  } = require('discord-player');
+const { useQueue } = require('discord-player');
+const { Translate } = require('../../process_tools');
 
 module.exports = {
     name: 'skip',
-    description: 'DEGAGE MOI CA DE LA',
+    description:('Skip the track'),
     voiceChannel: true,
 
-    execute({ inter }) {
-        const player = useMainPlayer()
-
-const queue = useQueue(inter.guild);
-
-         if (!queue || !queue.isPlaying()) return inter.editReply({ content:`T'es con wesh?? ya pas de son ${inter.member}`, ephemeral: true });
+    async execute({ inter }) {
+        const queue = useQueue(inter.guild);
+        if (!queue?.isPlaying()) return inter.editReply({ content: await Translate(`No music currently playing <${inter.member}>... try again ? <❌>`) });
 
         const success = queue.node.skip();
 
-        const SkipEmbed = new EmbedBuilder()
-        .setColor('#F47C61')
-        .setAuthor({name: success ? `CA A BIEN DEGAGER ${queue.currentTrack.title} 🤡` : `PROBLEMO DEMANDE A @val ou @myw ${inter.member}` })
+        const embed = new EmbedBuilder()
+            .setColor('#2f3136')
+            .setAuthor({ name: success ? await Translate(`Current music <${queue.currentTrack.title}> skipped <✅>`) : await Translate(`Something went wrong <${inter.member}>... try again ? <❌>`) });
 
-
-       return inter.editReply({ embeds: [SkipEmbed] });
-
-    },
-};
+        return inter.editReply({ embeds: [embed] });
+    }
+}

@@ -1,26 +1,24 @@
 const { EmbedBuilder } = require('discord.js');
-const { useMainPlayer, useQueue} = require('discord-player');
+const { useQueue } = require('discord-player');
+const { Translate } = require('../../process_tools');
 
 module.exports = {
     name: 'clear',
-    description: 'DEGAGE TOUT',
+    description:('Clear all the music in the queue'),
     voiceChannel: true,
 
     async execute({ inter }) {
-const queue = useQueue(inter.guild);
-        const player = useMainPlayer()
+        const queue = useQueue(inter.guild);
+        if (!queue?.isPlaying()) return inter.editReply({ content: await Translate(`No music currently playing <${inter.member}>... try again ? <❌>`) });
 
-        if (!queue || !queue.isPlaying()) return inter.editReply({ content: `Ya rien à vider mon pote ${inter.member}🤣😴`, ephemeral: true });
+        if (!queue.tracks.toArray()[1]) return inter.editReply({ content: await Translate(`No music in the queue after the current one <${inter.member}>... try again ? <❌>`) });
 
-        if (!queue.tracks.toArray()[1]) return inter.editReply({ content: `Ya rien à vider mon pote ${inter.member}🤣😴`, ephemeral: true });
+        queue.tracks.clear();
 
-        await queue.tracks.clear();
+        const clearEmbed = new EmbedBuilder()
+            .setAuthor({ name: await Translate(`The queue has just been cleared <🗑️>`) })
+            .setColor('#2f3136');
 
-        const ClearEmbed = new EmbedBuilder()
-        .setAuthor({name: `CA A TOUT VIDE LE S 🗑️`})
-        .setColor('#2f3136')
-        
-        inter.editReply({ embeds: [ClearEmbed] });
-
-    },
-};
+        inter.editReply({ embeds: [clearEmbed] });
+    }
+}

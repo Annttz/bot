@@ -1,45 +1,42 @@
 const { ApplicationCommandOptionType, EmbedBuilder } = require('discord.js');
-const { QueryType, useMainPlayer, useQueue   } = require('discord-player');
+const { QueryType, useMainPlayer, useQueue } = require('discord-player');
+const { Translate } = require('../../process_tools');
 
 module.exports = {
     name: 'playnext',
-    description: "song you want to playnext",
+    description:("Play a song right after this one"),
     voiceChannel: true,
     options: [
         {
             name: 'song',
-            description: 'the song you want to playnext',
+            description:('The song you want to play next'),
             type: ApplicationCommandOptionType.String,
             required: true,
         }
     ],
 
     async execute({ inter }) {
-        const player = useMainPlayer()
+        const player = useMainPlayer();
+        const queue = useQueue(inter.guild);
 
-const queue = useQueue(inter.guild);
-
-        if (!queue || !queue.isPlaying()) return inter.editReply({ content: `Ya pas de son maggggle...  ${inter.member}🤣😴`, ephemeral: true });
+        if (!queue?.isPlaying()) return inter.editReply({ content: await Translate(`No music currently playing <${inter.member}>... try again ? <❌>`) });
 
         const song = inter.options.getString('song');
-
         const res = await player.search(song, {
             requestedBy: inter.member,
             searchEngine: QueryType.AUTO
         });
 
-        if (!res || !res.tracks.length) return inter.editReply({ content: `Ca a pas trouvé mon pote ${inter.member}🤣😴`, ephemeral: true });
+        if (!res?.tracks.length) return inter.editReply({ content: await Translate(`No results found <${inter.member}>... try again ? <❌>`) });
 
-       if (res.playlist) return inter.editReply({ content: `FOCCCCK il trouve pas la playlist oooopsi ${inter.member}`, ephemeral: true });
+        if (res.playlist) return inter.editReply({ content: await Translate(`This command dose not support playlist's <${inter.member}>... try again ? <❌>`) });
 
-        queue.insertTrack(res.tracks[0], 0)
+        queue.insertTrack(res.tracks[0], 0);
 
-        const PlayNextEmbed = new EmbedBuilder()
-        .setAuthor({name: `Tqt bg ca arrive juste après 😎` })
-        .setColor('#2f3136')
-        
-        await inter.editReply({ embeds: [PlayNextEmbed] });
+        const playNextEmbed = new EmbedBuilder()
+            .setAuthor({ name: await Translate(`Track has been inserted into the queue... it will play next <🎧>`) })
+            .setColor('#2f3136');
 
-
+        await inter.editReply({ embeds: [playNextEmbed] });
     }
 }
